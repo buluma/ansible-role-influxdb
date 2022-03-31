@@ -1,0 +1,21 @@
+---
+galaxy_info:
+  author: Michael Buluma
+  namespace: buluma
+  role_name: influxdb
+  description: Install and configure influxdb on your system.
+  company: ShadowNet
+  license: (Apache-2.0)
+
+  min_ansible_version: 2.10
+  platforms:
+    - name: Fedora
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+
+  galaxy_tags: []
+
+dependencies: []
