@@ -15,7 +15,7 @@ driver:
   name: docker
 platforms:
   - name: "influxdb-${image:-fedora}-${tag:-rawhide}${TOX_ENVNAME}"
-    image: "${namespace:-robertdebock}/${image:-fedora}:${tag:-rawhide}"
+    image: "${namespace:-buluma}/${image:-fedora}:${tag:-rawhide}"
     command: /sbin/init
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
