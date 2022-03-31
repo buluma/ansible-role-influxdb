@@ -1,0 +1,8 @@
+---
+#
+# Ansible managed
+#
+repository:
+  description: Install and configures InfluDB on Rhel, Debian and Ubuntu
+  homepage: https://buluma.github.io/
+  topics: rhel, debian, ubuntu, centos, influxdb, performance, metrics, collector, icinga2, monitoring, ansible, molecule, tox, playbook, hacktoberfest

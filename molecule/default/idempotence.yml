@@ -13,5 +13,7 @@
         grants:
           - database: telegraf-metrics
             privilege: "WRITE"
-  roles:
-    - role: ansible-role-influxdb
+  tasks:
+    - name: "Include buluma.influxdb"
+      include_role:
+        name: "buluma.influxdb"
