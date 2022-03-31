@@ -1,3 +1,4 @@
+---
 - name: RedHat - Add InfluxDB repository
   yum_repository:
     name: InfluxDB
@@ -19,4 +20,3 @@
 - name: RedHat - Ensure python influxdb library
   pip:
     name: influxdb
-    

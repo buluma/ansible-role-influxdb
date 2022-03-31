@@ -1,3 +1,4 @@
+---
 - name: create influxdb configuration
   template:
     src: "influxdb.conf.j2"

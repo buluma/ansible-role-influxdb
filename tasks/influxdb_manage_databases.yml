@@ -1,3 +1,4 @@
+---
 - name: manage databases
   influxdb_database:
     database_name: "{{ db.name }}"

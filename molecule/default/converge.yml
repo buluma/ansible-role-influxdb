@@ -15,3 +15,4 @@
             privilege: "WRITE"
   roles:
     - role: ansible-role-influxdb
+    - role: ansible-role-influxdb
