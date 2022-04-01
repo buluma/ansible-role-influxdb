@@ -17,6 +17,7 @@
   loop:
     - influxdb
 
-- name: RedHat - Ensure python influxdb library
-  pip:
-    name: influxdb
+# TODO: Find a better way to improve this feature
+# - name: RedHat - Ensure python influxdb library
+#   pip:
+#     name: influxdb

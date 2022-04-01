@@ -14,5 +14,4 @@
           - database: telegraf-metrics
             privilege: "WRITE"
   roles:
-    - role: ansible-role-influxdb
-    - role: ansible-role-influxdb
+    - role: buluma.influxdb

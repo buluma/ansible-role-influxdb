@@ -28,6 +28,7 @@
   loop:
     - influxdb
 
-- name: Debian - Ensure python influxdb library
-  pip:
-    name: influxdb
+# TODO: Find a better way to improve this feature
+# - name: Debian - Ensure python influxdb library
+#   pip:
+#     name: influxdb
