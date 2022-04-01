@@ -14,9 +14,12 @@ lint: |
 driver:
   name: docker
 platforms:
-  - name: "influxdb-${image:-fedora}-${tag:-rawhide}${TOX_ENVNAME}"
-    image: "${namespace:-buluma}/${image:-fedora}:${tag:-rawhide}"
-    command: /sbin/init
+  - name: "influxdb2-${image:-fedora}-${tag:-latest}${TOX_ENVNAME}"
+    image: "${namespace:-buluma}/${image:-fedora}:${tag:-latest}"
+    command: /lib/systemd/systemd
+    tmpfs:
+      - /run
+      - /run/lock
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: yes
