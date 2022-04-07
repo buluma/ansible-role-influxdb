@@ -15,8 +15,6 @@ molecule:
   parallel:
     matrix:
       - image: "enterpriselinux"
-        tag: "7"
-      - image: "enterpriselinux"
         tag: "latest"
       - image: "docker-ubuntu-systemd"
         tag: "latest"
@@ -26,8 +24,6 @@ molecule:
         tag: "focal"
       - image: "debian-systemd"
         tag: "latest"
-      - image: "debian-systemd"
-        tag: "bookworm"
 
 testing:
   script:
@@ -38,8 +34,6 @@ testing:
   parallel:
     matrix:
       - image: "enterpriselinux"
-        tag: "7"
-      - image: "enterpriselinux"
         tag: "latest"
       - image: "docker-ubuntu-systemd"
         tag: "latest"
@@ -49,8 +43,6 @@ testing:
         tag: "focal"
       - image: "debian-systemd"
         tag: "latest"
-      - image: "debian-systemd"
-        tag: "bookworm"
 
 galaxy:
   script:
@@ -63,8 +55,6 @@ role_testing:
   parallel:
     matrix:
       - image: "enterpriselinux"
-        tag: "7"
-      - image: "enterpriselinux"
         tag: "latest"
       - image: "docker-ubuntu-systemd"
         tag: "latest"
@@ -74,5 +64,3 @@ role_testing:
         tag: "focal"
       - image: "debian-systemd"
         tag: "latest"
-      - image: "debian-systemd"
-        tag: "bookworm"
