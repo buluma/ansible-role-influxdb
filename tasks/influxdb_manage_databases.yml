@@ -1,6 +1,6 @@
 ---
 - name: manage databases
-  influxdb_database:
+  community.general.influxdb_database:
     database_name: "{{ db.name }}"
     login_username: "{{ db.login_username | default(influxdb_admin_username) }}"
     login_password: "{{ db.login_password | default(influxdb_admin_password) }}"
@@ -21,7 +21,7 @@
 
 
 - name: manage users
-  influxdb_user:
+  community.general.influxdb_user:
     admin: "{{ user.admin | default(omit) }}"
     grants: "{{ user.grants | default(omit) }}"
     state: "{{ user.state | default('present') }}"

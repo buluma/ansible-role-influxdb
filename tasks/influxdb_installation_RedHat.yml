@@ -1,6 +1,6 @@
 ---
 - name: RedHat - Add InfluxDB repository
-  yum_repository:
+  ansible.builtin.yum_repository:
     name: InfluxDB
     description: InfluxDB Repository - RHEL \$releasever
     baseurl: "{{ influxdb_yum_url }}"
@@ -9,7 +9,7 @@
   when: influxdb_manage_repository
 
 - name: RedHat - Ensure InfluxDB is installed
-  yum:
+  ansible.builtin.yum:
     name: "{{ item }}"
     state: present
   when: influxdb_manage_package
@@ -17,7 +17,6 @@
   loop:
     - influxdb
 
-# TODO: Find a better way to improve this feature
-# - name: RedHat - Ensure python influxdb library
-#   pip:
-#     name: influxdb
+- name: RedHat - Ensure python influxdb library
+  ansible.builtin.pip:
+    name: influxdb
