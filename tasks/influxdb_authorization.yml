@@ -1,11 +1,11 @@
 ---
 - name: start influxdb
-  service:
+  ansible.builtin.service:
     name: influxdb
     state: started
 
 - name: check if influxdb is started
-  wait_for:
+  ansible.builtin.wait_for:
     host: "{{ influxdb_config_global['bind-address'].split(':')[0] }}"
     port: "{{ influxdb_config_global['bind-address'].split(':')[1] }}"
     delay: 5
