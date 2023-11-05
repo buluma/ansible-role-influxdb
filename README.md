@@ -2,13 +2,14 @@
 
 Install and configures InfluDB on Rhel, Debian and Ubuntu
 
-|GitHub|GitLab|Quality|Downloads|Version|Issues|Pull Requests|
-|------|------|-------|---------|-------|------|-------------|
-|[![github](https://github.com/buluma/ansible-role-influxdb/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-influxdb/actions)|[![gitlab](https://gitlab.com/buluma/ansible-role-influxdb/badges/master/pipeline.svg)](https://gitlab.com/buluma/ansible-role-influxdb)|[![quality](https://img.shields.io/ansible/quality/)](https://galaxy.ansible.com/buluma/influxdb)|[![downloads](https://img.shields.io/ansible/role/d/)](https://galaxy.ansible.com/buluma/influxdb)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-influxdb.svg)](https://github.com/buluma/ansible-role-influxdb/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-influxdb.svg)](https://github.com/buluma/ansible-role-influxdb/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-influxdb.svg)](https://github.com/buluma/ansible-role-influxdb/pulls/)|
+|GitHub|GitLab|Downloads|Version|Issues|Pull Requests|
+|------|------|-------|-------|------|-------------|
+|[![github](https://github.com/buluma/ansible-role-influxdb/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-influxdb/actions)|[![gitlab](https://gitlab.com/shadowwalker/ansible-role-influxdb/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-influxdb)|[![downloads](https://img.shields.io/ansible/role/d/4735)](https://galaxy.ansible.com/buluma/influxdb)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-influxdb.svg)](https://github.com/buluma/ansible-role-influxdb/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-influxdb.svg)](https://github.com/buluma/ansible-role-influxdb/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-influxdb.svg)](https://github.com/buluma/ansible-role-influxdb/pulls/)|
 
 ## [Example Playbook](#example-playbook)
 
-This example is taken from `molecule/default/converge.yml` and is tested on each push, pull request and release.
+This example is taken from [`molecule/default/converge.yml`](https://github.com/buluma/ansible-role-influxdb/blob/master/molecule/default/converge.yml) and is tested on each push, pull request and release.
+
 ```yaml
 ---
 - name: Converge
@@ -29,12 +30,19 @@ This example is taken from `molecule/default/converge.yml` and is tested on each
     - role: buluma.influxdb
 ```
 
-The machine needs to be prepared. In CI this is done using `molecule/default/prepare.yml`:
+The machine needs to be prepared. In CI this is done using [`molecule/default/prepare.yml`](https://github.com/buluma/ansible-role-influxdb/blob/master/molecule/default/prepare.yml):
+
 ```yaml
 ---
 - name: prepare container
   hosts: all
   gather_facts: true
+  roles:
+    - role: buluma.bootstrap
+    - role: buluma.epel
+    # - role: buluma.buildtools
+    # - role: buluma.ca_certificates
+
   tasks:
     - name: install python-pip on RHEL7
       yum:
@@ -71,10 +79,12 @@ The machine needs to be prepared. In CI this is done using `molecule/default/pre
       when: ( ansible_os_family == "Debian" and ( ansible_distribution_major_version == "10" or ansible_distribution_major_version == "9" ))
 ```
 
+Also see a [full explanation and example](https://buluma.github.io/how-to-use-these-roles.html) on how to use these roles.
 
 ## [Role Variables](#role-variables)
 
-The default values for the variables are set in `defaults/main.yml`:
+The default values for the variables are set in [`defaults/main.yml`](https://github.com/buluma/ansible-role-influxdb/blob/master/defaults/main.yml):
+
 ```yaml
 ---
 influxdb_manage_repository: yes
@@ -84,40 +94,50 @@ influxdb_config_global:
     reporting-disabled: false
     bind-address: 127.0.0.1:8088
 influxdb_config_graphite:
-  - enabled: false
-    tags:
-      - region=us
-      - zone=test
+    - enabled: false
+      tags:
+          - region=us
+          - zone=test
 influxdb_config_collectd:
-  - enabled: false
+    - enabled: false
 influxdb_config_udp:
-  - enabled: false
+    - enabled: false
 influxdb_config_meta:
-  dir: /var/lib/influxdb/meta
-  retention-autocreate: true
-  logging-enabled: true
+    dir: /var/lib/influxdb/meta
+    retention-autocreate: true
+    logging-enabled: true
 influxdb_config_http:
-  enabled: true
-  https-enabled: false
-  bind-address: 127.0.0.1:8086
-  auth-enabled: true
-  ping-auth-enabled: true
+    enabled: true
+    https-enabled: false
+    bind-address: 127.0.0.1:8086
+    auth-enabled: true
+    ping-auth-enabled: true
 influxdb_config_data:
-  dir: /var/lib/influxdb/data
-  wal-dir: /var/lib/influxdb/wal
-  series-id-set-cache-size: 100
+    dir: /var/lib/influxdb/data
+    wal-dir: /var/lib/influxdb/wal
+    series-id-set-cache-size: 100
 influxdb_admin_username: admin
 influxdb_admin_password: admin
 ```
 
 ## [Requirements](#requirements)
 
-- pip packages listed in [requirements.txt](https://github.com/buluma/ansible-role-influxdb/blob/main/requirements.txt).
+- pip packages listed in [requirements.txt](https://github.com/buluma/ansible-role-influxdb/blob/master/requirements.txt).
 
+## [State of used roles](#state-of-used-roles)
+
+The following roles are used to prepare a system. You can prepare your system in another way.
+
+| Requirement | GitHub | GitLab |
+|-------------|--------|--------|
+|[buluma.bootstrap](https://galaxy.ansible.com/buluma/bootstrap)|[![Build Status GitHub](https://github.com/buluma/ansible-role-bootstrap/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-bootstrap/actions)|[![Build Status GitLab](https://gitlab.com/shadowwalker/ansible-role-bootstrap/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-bootstrap)|
+|[buluma.epel](https://galaxy.ansible.com/buluma/epel)|[![Build Status GitHub](https://github.com/buluma/ansible-role-epel/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-epel/actions)|[![Build Status GitLab](https://gitlab.com/shadowwalker/ansible-role-epel/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-epel)|
+|[buluma.buildtools](https://galaxy.ansible.com/buluma/buildtools)|[![Build Status GitHub](https://github.com/buluma/ansible-role-buildtools/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-buildtools/actions)|[![Build Status GitLab](https://gitlab.com/shadowwalker/ansible-role-buildtools/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-buildtools)|
+|[buluma.ca_certificates](https://galaxy.ansible.com/buluma/ca_certificates)|[![Build Status GitHub](https://github.com/buluma/ansible-role-ca_certificates/workflows/Ansible%20Molecule/badge.svg)](https://github.com/buluma/ansible-role-ca_certificates/actions)|[![Build Status GitLab](https://gitlab.com/shadowwalker/ansible-role-ca_certificates/badges/master/pipeline.svg)](https://gitlab.com/shadowwalker/ansible-role-ca_certificates)|
 
 ## [Context](#context)
 
-This role is a part of many compatible roles. Have a look at [the documentation of these roles](https://buluma.co.ke/) for further information.
+This role is a part of many compatible roles. Have a look at [the documentation of these roles](https://buluma.github.io/) for further information.
 
 Here is an overview of related roles:
 
@@ -129,9 +149,9 @@ This role has been tested on these [container images](https://hub.docker.com/u/b
 
 |container|tags|
 |---------|----|
-|el|all|
-|ubuntu|all|
-|debian|all|
+|[EL](https://hub.docker.com/repository/docker/buluma/enterpriselinux/general)|all|
+|[Ubuntu](https://hub.docker.com/repository/docker/buluma/ubuntu/general)|all|
+|[Debian](https://hub.docker.com/repository/docker/buluma/debian/general)|all|
 
 The minimum version of Ansible required is 2.1, tests have been done to:
 
@@ -139,14 +159,22 @@ The minimum version of Ansible required is 2.1, tests have been done to:
 - The current version.
 - The development version.
 
-
-
 If you find issues, please register them in [GitHub](https://github.com/buluma/ansible-role-influxdb/issues)
+
+## [Changelog](#changelog)
+
+[Role History](https://github.com/buluma/ansible-role-influxdb/blob/master/CHANGELOG.md)
 
 ## [License](#license)
 
-Apache-2.0
+[Apache-2.0](https://github.com/buluma/ansible-role-influxdb/blob/master/LICENSE).
 
 ## [Author Information](#author-information)
 
 [buluma](https://buluma.github.io/)
+
+Please consider [sponsoring me](https://github.com/sponsors/buluma).
+
+### [Special Thanks](#special-thanks)
+
+Template inspired by [Robert de Bock](https://github.com/robertdebock)
