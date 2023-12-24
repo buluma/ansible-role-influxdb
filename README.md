@@ -1,10 +1,10 @@
-# [Ansible role influxdb](#influxdb)
+# Ansible role [influxdb](https://galaxy.ansible.com/ui/standalone/roles/buluma/influxdb/documentation)
 
 Install and configures InfluDB on Rhel, Debian and Ubuntu
 
-|GitHub|Version|Issues|Pull Requests|
-|------|-------|------|-------------|
-|[![github](https://github.com/buluma/ansible-role-influxdb/actions/workflows/molecule.yml/badge.svg)](https://github.com/buluma/ansible-role-influxdb/actions/workflows/molecule.yml)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-influxdb.svg)](https://github.com/buluma/ansible-role-influxdb/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-influxdb.svg)](https://github.com/buluma/ansible-role-influxdb/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-influxdb.svg)](https://github.com/buluma/ansible-role-influxdb/pulls/)|
+|GitHub|Version|Issues|Pull Requests|Downloads|
+|------|-------|------|-------------|---------|
+|[![github](https://github.com/buluma/ansible-role-influxdb/actions/workflows/molecule.yml/badge.svg)](https://github.com/buluma/ansible-role-influxdb/actions/workflows/molecule.yml)|[![Version](https://img.shields.io/github/release/buluma/ansible-role-influxdb.svg)](https://github.com/buluma/ansible-role-influxdb/releases/)|[![Issues](https://img.shields.io/github/issues/buluma/ansible-role-influxdb.svg)](https://github.com/buluma/ansible-role-influxdb/issues/)|[![PullRequests](https://img.shields.io/github/issues-pr-closed-raw/buluma/ansible-role-influxdb.svg)](https://github.com/buluma/ansible-role-influxdb/pulls/)|[![Ansible Role](https://img.shields.io/ansible/role/d/buluma/influxdb)](https://galaxy.ansible.com/ui/standalone/roles/buluma/influxdb/documentation)|
 
 ## [Example Playbook](#example-playbook)
 
@@ -167,13 +167,11 @@ If you find issues, please register them in [GitHub](https://github.com/buluma/a
 
 ## [License](#license)
 
-[Apache-2.0](https://github.com/buluma/ansible-role-influxdb/blob/master/LICENSE).
+[Apache-2.0](https://github.com/buluma/ansible-role-influxdb/blob/master/LICENSE)
 
 ## [Author Information](#author-information)
 
-[buluma](https://buluma.github.io/)
+[Shadow Walker](https://buluma.github.io/)
 
-
-### [Special Thanks](#special-thanks)
 
 Template inspired by [Robert de Bock](https://github.com/robertdebock)
