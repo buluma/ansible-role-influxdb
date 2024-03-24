@@ -1,0 +1,15 @@
+digraph PhiloDilemma {
+  label = "Michael Buluma" ;
+  overlap=false
+  {
+    "influxdb" [fillcolor=yellow style=filled penwidth=3]
+    "buluma.bootstrap" [fillcolor=green style=filled]
+    "buluma.epel" [fillcolor=green style=filled]
+    "buluma.buildtools" [fillcolor=green style=filled]
+    "buluma.ca_certificates" [fillcolor=green style=filled]
+  }
+  "influxdb" -> "buluma.bootstrap"
+  "influxdb" -> "buluma.epel"
+  "influxdb" -> "buluma.buildtools"
+  "influxdb" -> "buluma.ca_certificates"
+}
