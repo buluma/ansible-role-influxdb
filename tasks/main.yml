@@ -14,8 +14,20 @@
     - install
     - config
 
-- name: Include influxdb installation
-  ansible.builtin.import_tasks: "influxdb_installation_{{ ansible_os_family }}.yml"
+# - name: Include influxdb installation
+#   ansible.builtin.import_tasks: "influxdb_installation_{{ ansible_os_family }}.yml"
+#   tags:
+#     - install
+
+- name: Include influxdb Debian installation
+  ansible.builtin.import_tasks: "influxdb_installation_Debian.yml"
+  when: ( ansible_os_family == "Debian" and ansible_distribution == "Ubuntu" )
+  tags:
+    - install
+
+- name: Include influxdb Redhat installation
+  ansible.builtin.import_tasks: "influxdb_installation_RedHat.yml"
+  when: ansible_os_family == "RedHat"
   tags:
     - install
 

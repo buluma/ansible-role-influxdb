@@ -14,8 +14,8 @@ lint: |
 driver:
   name: docker
 platforms:
-  - name: "influxdb-${image:-fedora}-${tag:-latest}${TOX_ENVNAME}"
-    image: "${namespace:-buluma}/${image:-fedora}:${tag:-latest}"
+  - name: "influxdb-${image:-docker-molecule-images}-${tag:-focal}${TOX_ENVNAME}"
+    image: "${namespace:-buluma}/${image:-docker-molecule-images}:${tag:-focal}"
     command: /sbin/init
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
