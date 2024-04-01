@@ -5,18 +5,24 @@
     state: present
   when: influxdb_manage_repository
 
-# - name: influxdb_installation_Debian | Add Influxdb repository key
-#   ansible.builtin.apt_key:
-#     url: "{{ influxdb_apt_key }}"
-#     state: present
-#   when: influxdb_manage_repository and influxdb_apt_key
-#
-# - name: influxdb_installation_Debian | Add InfluxDB repository
-#   ansible.builtin.apt_repository:
-#     repo: "{{ influxdb_apt_url }}"
-#     state: present
-#     mode: 0644
-#   when: influxdb_manage_repository
+- name: influxdb_installation_Debian | Install requests
+  ansible.builtin.apt:
+    name: python3-requests
+    state: present
+  when: influxdb_manage_repository
+
+- name: influxdb_installation_Debian | Add Influxdb repository key
+  ansible.builtin.apt_key:
+    url: "{{ influxdb_apt_key }}"
+    state: present
+  when: influxdb_manage_repository and influxdb_apt_key
+
+- name: influxdb_installation_Debian | Add InfluxDB repository
+  ansible.builtin.apt_repository:
+    repo: "{{ influxdb_apt_url }}"
+    state: present
+    mode: 0644
+  when: influxdb_manage_repository
 
 - name: influxdb_installation_Debian | Ensure InfluxDB is installed
   ansible.builtin.apt:
