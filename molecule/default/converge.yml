@@ -1,6 +1,8 @@
 ---
 - name: Converge
   hosts: all
+  become: true
+  gather_facts: true
   vars:
     influxdb_admin_username: admin
     influxdb_admin_password: admin123

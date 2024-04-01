@@ -15,8 +15,7 @@
     - config
 
 - name: Include influxdb installation
-  ansible.builtin.import_tasks:
-    file: influxdb_installation_{{ ansible_os_family }}.yml
+  ansible.builtin.import_tasks: "influxdb_installation_{{ ansible_os_family }}.yml"
   tags:
     - install
 
