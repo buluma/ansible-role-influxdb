@@ -1,6 +1,6 @@
 ---
 - name: Include OS specific vars
-  include_vars: "{{ lookup('first_found', params) }}"
+  ansible.builtin.include_vars: "{{ lookup('first_found', params) }}"
   vars:
     params:
       files:
@@ -14,27 +14,28 @@
     - install
     - config
 
-- name: include influxdb installation
-  import_tasks: "influxdb_installation_{{ ansible_os_family }}.yml"
+- name: Include influxdb installation
+  ansible.builtin.import_tasks:
+    file: influxdb_installation_{{ ansible_os_family }}.yml
   tags:
     - install
 
-- name: include influxdb configuration
-  import_tasks: "influxdb_configuration.yml"
+- name: Include influxdb configuration
+  ansible.builtin.import_tasks: "influxdb_configuration.yml"
   tags:
     - config
     - install
 
-- name: include influxdb authorization
-  import_tasks: "influxdb_authorization.yml"
+- name: Include influxdb authorization
+  ansible.builtin.import_tasks: "influxdb_authorization.yml"
   when: ( influxdb_admin_username and influxdb_admin_password )
   tags:
     - config
     - install
     - manage-content
 
-- name: include influxdb database creation
-  import_tasks: "influxdb_manage_databases.yml"
+- name: Include influxdb database creation
+  ansible.builtin.import_tasks: "influxdb_manage_databases.yml"
   tags:
     - install
     - manage-content

@@ -1,13 +1,13 @@
 ---
-- name: start-influxdb
-  service:
+- name: Start-influxdb
+  ansible.builtin.service:
     name: influxdb
     state: started
-    enabled: yes
+    enabled: true
     retries: 10
     delay: 5
 
-- name: restart-influxdb
-  service:
+- name: Restart-influxdb
+  ansible.builtin.service:
     name: influxdb
     state: restarted

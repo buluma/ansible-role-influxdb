@@ -1,6 +1,6 @@
 ---
-influxdb_manage_repository: yes
-influxdb_manage_package: yes
+influxdb_manage_repository: true
+influxdb_manage_package: true
 influxdb_config_dir: /etc/influxdb
 influxdb_config_global:
     reporting-disabled: false
